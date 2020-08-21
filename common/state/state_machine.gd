@@ -48,7 +48,6 @@ func _change_state(state_name : String):
 	if not _active or not current_state: return
 		
 	# Always exit the current state.
-	print_debug("exiting state!");
 	current_state.exit()
 	
 	# If the provided state is null, pop the state.

@@ -23,5 +23,7 @@ static func find_matches(node_map : Dictionary, min_count : int = 3) -> Dictiona
 	var _matches = {}
 	for _coord in node_map:
 		_matches[_coord] = _get_matching_neighbors_recursive(_coord, node_map, [])
+	for _match in _matches:
+		if _matches[_match].size() < min_count: _matches[_match] = []
 		
 	return _matches

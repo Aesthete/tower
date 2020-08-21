@@ -7,8 +7,8 @@ func enter():
 		
 func _on_tile_pressed(tile : TileBase):
 	print ("Player input state is handling tile press.")
-	if tile.Selectable:
-		if _board.is_tile_in_match(tile) and not _board.is_tile_matched_already(tile):
-			pass # DO EPIC MATCHING SHIT
+	if tile and tile.Selectable:
+		if _board.is_tile_in_match(tile) and not tile.is_matched():
+			_board.register_new_match_made(tile)
 	else:
 		pass # handle no match state

@@ -13,12 +13,13 @@ onready var _states : StateMachine = $States
 # keep a list of tiles by tilemap index.
 var _tiles : Dictionary = Dictionary() # Vector2: Tile node.
 var _matches_possible : Dictionary = Dictionary()
-var _matches_made : Dictionary = Dictionary()
 
 # External
-func is_tile_matched_already(tile : TileBase) -> bool:
+func register_new_match_made(tile : TileBase) -> void:
+	tile.emit_signal("TileMatched")
 	var _coord = get_tile_coord(tile)
-	return _matches_made.has(_coord)
+	for _peer_coord in _matches_possible[_coord]:
+		_tiles[_peer_coord].emit_signal("TileMatched");
 
 func is_tile_in_match(tile: TileBase) -> bool:
 	var _coord = get_tile_coord(tile)
@@ -57,6 +58,7 @@ func _ready():
 
 func _on_Board_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
-		var _coord = _tile_frame.world_to_map(event.position)
+		var _mouse_pos = event.position
+		var _coord = _tile_frame.world_to_map(_mouse_pos - position) # adjust for positioning of board in main scene.
 		var _tile = _tiles.get(_coord)
 		BoardSignals.emit_signal("TilePressed", _tile)

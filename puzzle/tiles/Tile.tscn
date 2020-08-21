@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://puzzle/tiles/tile.gd" type="Script" id=1]
-[ext_resource path="res://puzzle/tiles/states/selected.gd" type="Script" id=2]
 [ext_resource path="res://puzzle/tiles/states/idle.gd" type="Script" id=3]
 [ext_resource path="res://puzzle/tiles/states/matched.gd" type="Script" id=4]
 [ext_resource path="res://puzzle/tiles/states/falling.gd" type="Script" id=5]
@@ -20,9 +19,6 @@ START_STATE = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="States"]
 script = ExtResource( 3 )
-
-[node name="Selected" type="Node" parent="States"]
-script = ExtResource( 2 )
 
 [node name="Matched" type="Node" parent="States"]
 script = ExtResource( 4 )
