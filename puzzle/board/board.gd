@@ -44,14 +44,15 @@ func build_board():
 	for x in range(BoardSize.x):
 		for y in range(BoardSize.y):
 			var _coord = Vector2(x,y)
-			var _cell = _tile_frame.map_to_world(_coord)
+			var _new_pos = _tile_frame.map_to_world(_coord)
 			_tile_frame.set_cell(x,y,-1)
 			var _tile = _create_new_tile()
 			_tile_root.add_child(_tile)
-			_tile.position = _cell
+			_tile.position = _new_pos
 			_tiles[_coord] = _tile
 	_matches_possible = BoardUtil.find_matches(_tiles)
 	while _matches_possible.empty(): shuffle_board()
+	_force_reposition_tiles()
 	
 func shuffle_board():
 	print ("shuffling!")
@@ -62,20 +63,20 @@ func shuffle_board():
 		_tiles[_t] = _tile_objs[_idx]
 		_idx += 1		
 	_matches_possible = BoardUtil.find_matches(_tiles)
-	_reposition_tiles()
 	
 func _fill_empty_tiles():
 	for x in range(BoardSize.x):
 		for y in range(BoardSize.y):
 			var _coord = Vector2(x,y)
 			if _tiles.has(_coord) and _tiles[_coord]: continue
-			var _cell = _tile_frame.map_to_world(_coord)
+			var _spawn_coord = Vector2(x,-1)
+			var _new_pos = _tile_frame.map_to_world(_spawn_coord)
 			var _tile = _create_new_tile()
 			_tile_root.add_child(_tile)
-			_tile.position = _cell
+			_tile.position = _new_pos
 			_tiles[_coord] = _tile
 	
-func _reposition_tiles():
+func _force_reposition_tiles():
 	for x in range(BoardSize.x):
 		for y in range(BoardSize.y):
 			var _coord = Vector2(x,y)
@@ -85,15 +86,19 @@ func _reposition_tiles():
 	
 func fill_board_empty_tiles():
 		_tiles = BoardUtil.drop_tiles(_tiles, BoardSize)	
-		_reposition_tiles()
 		_fill_empty_tiles()
 		_matches_possible = BoardUtil.find_matches(_tiles)
-		if _matches_possible.empty():			
-			while _matches_possible.empty(): shuffle_board()
+		while _matches_possible.empty(): shuffle_board()
+			
+		for _tile in _tiles: 
+			if _tiles.get(_tile):
+				_tiles.get(_tile).target_position = _tile_frame.map_to_world(_tile)
+				
+		BoardSignals.emit_signal("BoardLayoutChanged")
 	
 func _create_new_tile() -> Node:
 	var _tile = TilePrefab.instance()
-	_tile.init(randi() % TileUtil.TileType.size(), randi() % TileUtil.TileColor.size())
+	_tile.init(randi() % TileUtil.TileType.size())
 	return _tile
 	
 func _ready():

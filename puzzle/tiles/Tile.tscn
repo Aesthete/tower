@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://puzzle/tiles/tile.gd" type="Script" id=1]
 [ext_resource path="res://puzzle/tiles/states/collecting.gd" type="Script" id=2]
@@ -6,10 +6,7 @@
 [ext_resource path="res://puzzle/tiles/states/matched.gd" type="Script" id=4]
 [ext_resource path="res://puzzle/tiles/states/falling.gd" type="Script" id=5]
 [ext_resource path="res://puzzle/tiles/states/tile_fsm.gd" type="Script" id=6]
-[ext_resource path="res://assets/colored_transparent_packed.png" type="Texture" id=7]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 7 )
+[ext_resource path="res://assets/sprites/bow.png" type="Texture" id=7]
 
 [node name="Tile" type="Node2D"]
 script = ExtResource( 1 )
@@ -30,20 +27,26 @@ script = ExtResource( 5 )
 [node name="Collecting" type="Node" parent="States"]
 script = ExtResource( 2 )
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Backing" type="ColorRect" parent="."]
 margin_right = 16.0
 margin_bottom = 16.0
 mouse_filter = 2
+color = Color( 0.388235, 0.341176, 0.341176, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="Sprite" parent="."]
-texture = SubResource( 1 )
+position = Vector2( 8, 8 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 7 )
 
 [node name="Highlight" type="ColorRect" parent="."]
-margin_right = 16.0
-margin_bottom = 16.0
+visible = false
+margin_left = 1.6
+margin_top = 1.6
+margin_right = 17.6
+margin_bottom = 17.6
 mouse_filter = 2
 color = Color( 1, 0, 0, 0.239216 )
 __meta__ = {

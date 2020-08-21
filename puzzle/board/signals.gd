@@ -7,3 +7,5 @@ signal TileRemovedFromBoard(tile)
 
 signal TileResolveTriggered()
 signal TileResolveRemovedMatched()
+
+signal BoardLayoutChanged()

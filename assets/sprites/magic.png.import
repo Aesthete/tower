@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crown.png-03a80d90ea6bc7f195d13ff8e91866b4.stex"
+path="res://.import/magic.png-7e523f2206ea027d382e82ab76dc3a74.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/crown.png"
-dest_files=[ "res://.import/crown.png-03a80d90ea6bc7f195d13ff8e91866b4.stex" ]
+source_file="res://assets/sprites/magic.png"
+dest_files=[ "res://.import/magic.png-7e523f2206ea027d382e82ab76dc3a74.stex" ]
 
 [params]
 
