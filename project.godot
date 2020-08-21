@@ -1,0 +1,103 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "EntityUtil",
+"language": "GDScript",
+"path": "res://entities/entity_utils.gd"
+}, {
+"base": "Reference",
+"class": "GameGlobal",
+"language": "GDScript",
+"path": "res://common/globals.gd"
+}, {
+"base": "Node",
+"class": "Health",
+"language": "GDScript",
+"path": "res://entities/health/health.gd"
+}, {
+"base": "Reference",
+"class": "InputActions",
+"language": "GDScript",
+"path": "res://common/util/input_actions.gd"
+}, {
+"base": "State",
+"class": "MotionStateBase",
+"language": "GDScript",
+"path": "res://entities/player/states/movement/motion.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://common/state/state.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://common/state/state_machine.gd"
+}, {
+"base": "Node2D",
+"class": "TileBase",
+"language": "GDScript",
+"path": "res://puzzle/tiles/tile.gd"
+} ]
+_global_script_class_icons={
+"EntityUtil": "",
+"GameGlobal": "",
+"Health": "",
+"InputActions": "",
+"MotionStateBase": "",
+"State": "",
+"StateMachine": "",
+"TileBase": ""
+}
+
+[application]
+
+config/name="Tower"
+run/main_scene="res://game/Main.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=180
+window/size/height=320
+window/size/test_width=720
+window/size/test_height=1280
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input]
+
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
