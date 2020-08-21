@@ -9,3 +9,7 @@ func _ready():
 		"shuffling_board": $ShufflingBoard,
 		"post_game": $PostGame
 	}
+
+func _change_state(state_name : String):
+	var _newState = states_map[state_name]
+	._change_state(state_name)

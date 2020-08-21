@@ -1,4 +1,5 @@
 extends Area2D
+class_name Board
 
 '''Core puzzle board class.'''
 
@@ -11,8 +12,24 @@ onready var _states : StateMachine = $States
 
 # keep a list of tiles by tilemap index.
 var _tiles : Dictionary = Dictionary() # Vector2: Tile node.
-var _matches : Dictionary = Dictionary()
+var _matches_possible : Dictionary = Dictionary()
+var _matches_made : Dictionary = Dictionary()
 
+# External
+func is_tile_matched_already(tile : TileBase) -> bool:
+	var _coord = get_tile_coord(tile)
+	return _matches_made.has(_coord)
+
+func is_tile_in_match(tile: TileBase) -> bool:
+	var _coord = get_tile_coord(tile)
+	return _coord and _matches_possible.get(_coord, []).size()
+
+# Internal.
+func get_tile_coord(tile : TileBase):
+	for x in _tiles:
+		if _tiles[x] == tile: return x
+	return null
+	
 func _clear_board():
 	for _tile in _tiles:
 		pass # clear tiles here.
@@ -28,8 +45,7 @@ func build_board():
 			_tile_root.add_child(_tile)
 			_tile.position = _cell
 			_tiles[_coord] = _tile
-	#print(_tiles)
-	_matches = BoardUtil.find_matches(_tiles)
+	_matches_possible = BoardUtil.find_matches(_tiles)
 	
 func _create_new_tile() -> Node:
 	var _tile = TilePrefab.instance()
@@ -43,5 +59,4 @@ func _on_Board_input_event(viewport, event, shape_idx):
 	if (event is InputEventMouseButton && event.pressed):
 		var _coord = _tile_frame.world_to_map(event.position)
 		var _tile = _tiles.get(_coord)
-		print (_tile)
-		print(_matches[_coord] if _matches.has(_coord) else "No matches")
+		BoardSignals.emit_signal("TilePressed", _tile)
