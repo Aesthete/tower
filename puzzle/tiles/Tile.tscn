@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://puzzle/tiles/tile.gd" type="Script" id=1]
+[ext_resource path="res://puzzle/tiles/states/selected.gd" type="Script" id=2]
+[ext_resource path="res://puzzle/tiles/states/idle.gd" type="Script" id=3]
+[ext_resource path="res://puzzle/tiles/states/matched.gd" type="Script" id=4]
+[ext_resource path="res://puzzle/tiles/states/falling.gd" type="Script" id=5]
+[ext_resource path="res://puzzle/tiles/states/tile_fsm.gd" type="Script" id=6]
+[ext_resource path="res://assets/colored_transparent_packed.png" type="Texture" id=7]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 7 )
+
+[node name="Tile" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="States" type="Node" parent="."]
+script = ExtResource( 6 )
+START_STATE = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="States"]
+script = ExtResource( 3 )
+
+[node name="Selected" type="Node" parent="States"]
+script = ExtResource( 2 )
+
+[node name="Matched" type="Node" parent="States"]
+script = ExtResource( 4 )
+
+[node name="Falling" type="Node" parent="States"]
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="."]
+texture = SubResource( 1 )
+
+[node name="Highlight" type="ColorRect" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
+color = Color( 1, 0, 0, 0.239216 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

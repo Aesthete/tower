@@ -10,29 +10,14 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
-"class": "EntityUtil",
-"language": "GDScript",
-"path": "res://entities/entity_utils.gd"
-}, {
-"base": "Reference",
 "class": "GameGlobal",
 "language": "GDScript",
 "path": "res://common/globals.gd"
-}, {
-"base": "Node",
-"class": "Health",
-"language": "GDScript",
-"path": "res://entities/health/health.gd"
 }, {
 "base": "Reference",
 "class": "InputActions",
 "language": "GDScript",
 "path": "res://common/util/input_actions.gd"
-}, {
-"base": "State",
-"class": "MotionStateBase",
-"language": "GDScript",
-"path": "res://entities/player/states/movement/motion.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -48,16 +33,19 @@ _global_script_classes=[ {
 "class": "TileBase",
 "language": "GDScript",
 "path": "res://puzzle/tiles/tile.gd"
+}, {
+"base": "Reference",
+"class": "TileUtil",
+"language": "GDScript",
+"path": "res://puzzle/tiles/util.gd"
 } ]
 _global_script_class_icons={
-"EntityUtil": "",
 "GameGlobal": "",
-"Health": "",
 "InputActions": "",
-"MotionStateBase": "",
 "State": "",
 "StateMachine": "",
-"TileBase": ""
+"TileBase": "",
+"TileUtil": ""
 }
 
 [application]

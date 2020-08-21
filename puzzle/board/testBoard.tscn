@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://puzzle/board/board.gd" type="Script" id=3]
+[ext_resource path="res://puzzle/tiles/Tile.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 72, 96 )
+
+[node name="Board" type="Area2D"]
+script = ExtResource( 3 )
+TilePrefab = ExtResource( 4 )
+
+[node name="InstancedTiles" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 72, 96 )
+shape = SubResource( 1 )
+[connection signal="input_event" from="." to="." method="_on_Board_input_event"]

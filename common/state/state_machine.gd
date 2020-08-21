@@ -17,7 +17,6 @@ var _active : bool = false setget set_active
 func _ready():
 	for child in get_children():
 		child.connect(State.SIGNAL_STATE_FINISHED, self, "_change_state")
-	initialize(START_STATE)
 
 func initialize(start_state : NodePath):
 	set_active(true)
@@ -34,20 +33,19 @@ func set_active(value : bool):
 		current_state = null
 
 func _input(event):
-	current_state.handle_input(event)
+	if not _active or not current_state: return
+	if current_state: current_state.handle_input(event)
 
 func _physics_process(delta : float):
-	current_state.update(delta)
+	if not _active or not current_state: return
+	if current_state: current_state.update(delta)
 
 func _on_animation_finished(anim_name : String):
-	if not _active:
-		return
+	if not _active or not current_state: return
 	current_state._on_animation_finished(anim_name)
 
 func _change_state(state_name : String):
-	# Don't do anything if not active.
-	if not _active:
-		return
+	if not _active or not current_state: return
 		
 	# Always exit the current state.
 	print_debug("exiting state!");
