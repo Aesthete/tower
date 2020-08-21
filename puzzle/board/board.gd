@@ -11,6 +11,7 @@ onready var _states : StateMachine = $States
 
 # keep a list of tiles by tilemap index.
 var _tiles : Dictionary = Dictionary() # Vector2: Tile node.
+var _matches : Dictionary = Dictionary()
 
 func _clear_board():
 	for _tile in _tiles:
@@ -27,7 +28,8 @@ func build_board():
 			_tile_root.add_child(_tile)
 			_tile.position = _cell
 			_tiles[_coord] = _tile
-	print(_tiles)
+	#print(_tiles)
+	_matches = BoardUtil.find_matches(_tiles)
 	
 func _create_new_tile() -> Node:
 	var _tile = TilePrefab.instance()
@@ -42,3 +44,4 @@ func _on_Board_input_event(viewport, event, shape_idx):
 		var _coord = _tile_frame.world_to_map(event.position)
 		var _tile = _tiles.get(_coord)
 		print (_tile)
+		print(_matches[_coord] if _matches.has(_coord) else "No matches")
