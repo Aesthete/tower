@@ -17,6 +17,7 @@ var _matches_possible : Dictionary = Dictionary()
 # External
 func register_new_match_made(tile : TileBase) -> void:
 	tile.emit_signal("TileMatched")
+	BoardSignals.emit_signal("TileMatched", tile)
 	var _coord = get_tile_coord(tile)
 	for _peer_coord in _matches_possible[_coord]:
 		_tiles[_peer_coord].emit_signal("TileMatched");

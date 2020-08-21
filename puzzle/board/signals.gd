@@ -9,3 +9,5 @@ signal TileResolveTriggered()
 signal TileResolveRemovedMatched()
 
 signal BoardLayoutChanged()
+
+signal TurnTimerExpired()

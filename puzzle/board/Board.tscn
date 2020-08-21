@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://world/all_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://world/all_tile_solid.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/all_tile_solid.tres" type="TileSet" id=2]
 [ext_resource path="res://puzzle/board/board.gd" type="Script" id=3]
 [ext_resource path="res://puzzle/tiles/Tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://puzzle/board/states/pre_game.gd" type="Script" id=5]
