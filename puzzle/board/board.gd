@@ -31,6 +31,10 @@ func get_tile_coord(tile : TileBase):
 		if _tiles[x] == tile: return x
 	return null
 	
+func remove_tile_from_board(tile):
+	var _coord = get_tile_coord(tile)
+	_tiles.erase(_coord)
+	
 func _clear_board():
 	for _tile in _tiles:
 		pass # clear tiles here.
@@ -47,6 +51,45 @@ func build_board():
 			_tile.position = _cell
 			_tiles[_coord] = _tile
 	_matches_possible = BoardUtil.find_matches(_tiles)
+	while _matches_possible.empty(): shuffle_board()
+	
+func shuffle_board():
+	print ("shuffling!")
+	var _tile_objs = _tiles.values()
+	_tile_objs.shuffle()
+	var _idx = 0
+	for _t in _tiles:
+		_tiles[_t] = _tile_objs[_idx]
+		_idx += 1		
+	_matches_possible = BoardUtil.find_matches(_tiles)
+	_reposition_tiles()
+	
+func _fill_empty_tiles():
+	for x in range(BoardSize.x):
+		for y in range(BoardSize.y):
+			var _coord = Vector2(x,y)
+			if _tiles.has(_coord) and _tiles[_coord]: continue
+			var _cell = _tile_frame.map_to_world(_coord)
+			var _tile = _create_new_tile()
+			_tile_root.add_child(_tile)
+			_tile.position = _cell
+			_tiles[_coord] = _tile
+	
+func _reposition_tiles():
+	for x in range(BoardSize.x):
+		for y in range(BoardSize.y):
+			var _coord = Vector2(x,y)
+			if not _tiles.get(_coord): continue
+			var _cell = _tile_frame.map_to_world(_coord)
+			_tiles.get(_coord).position = _cell
+	
+func fill_board_empty_tiles():
+		_tiles = BoardUtil.drop_tiles(_tiles, BoardSize)	
+		_reposition_tiles()
+		_fill_empty_tiles()
+		_matches_possible = BoardUtil.find_matches(_tiles)
+		if _matches_possible.empty():			
+			while _matches_possible.empty(): shuffle_board()
 	
 func _create_new_tile() -> Node:
 	var _tile = TilePrefab.instance()
@@ -57,8 +100,4 @@ func _ready():
 	_states.initialize(_states.START_STATE) # Do this when the entire tree is ready.
 
 func _on_Board_input_event(viewport, event, shape_idx):
-	if (event is InputEventMouseButton && event.pressed):
-		var _mouse_pos = event.position
-		var _coord = _tile_frame.world_to_map(_mouse_pos - position) # adjust for positioning of board in main scene.
-		var _tile = _tiles.get(_coord)
-		BoardSignals.emit_signal("TilePressed", _tile)
+	_states._input(event)

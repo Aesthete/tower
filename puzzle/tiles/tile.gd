@@ -33,7 +33,3 @@ func _ready():
 	_states.initialize(_states.START_STATE)
 	_set_color(TileColor)
 	set_selected(Selected)
-	connect("TileMatched", self, "_on_matched")
-	
-func _on_matched():
-	print ("I was matched!")

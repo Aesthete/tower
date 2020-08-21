@@ -23,7 +23,25 @@ static func find_matches(node_map : Dictionary, min_count : int = 3) -> Dictiona
 	var _matches = {}
 	for _coord in node_map:
 		_matches[_coord] = _get_matching_neighbors_recursive(_coord, node_map, [])
+	var _erase = []
 	for _match in _matches:
-		if _matches[_match].size() < min_count: _matches[_match] = []
+		if _matches[_match].size() < min_count: _erase.append(_match)
+	for _e in _erase: _matches.erase(_e)
 		
 	return _matches
+
+static func drop_tiles(node_map : Dictionary, board_size : Vector2) -> Dictionary:
+		for x in range(board_size.x):
+			for y in range(board_size.y - 2, 0, -1):
+				var _coord = Vector2(x,y)
+				var _tile = node_map.get(_coord)
+				if not _tile: continue
+								
+				var _coord_below = Vector2(0, 1) + _coord
+				while not node_map.get(_coord_below):
+					if _coord_below.y >= board_size.y: break
+					node_map[_coord_below] = _tile
+					node_map.erase(_coord)
+					_coord = _coord_below
+					_coord_below = Vector2(0, 1) + _coord
+		return node_map

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://puzzle/tiles/tile.gd" type="Script" id=1]
+[ext_resource path="res://puzzle/tiles/states/collecting.gd" type="Script" id=2]
 [ext_resource path="res://puzzle/tiles/states/idle.gd" type="Script" id=3]
 [ext_resource path="res://puzzle/tiles/states/matched.gd" type="Script" id=4]
 [ext_resource path="res://puzzle/tiles/states/falling.gd" type="Script" id=5]
@@ -25,6 +26,9 @@ script = ExtResource( 4 )
 
 [node name="Falling" type="Node" parent="States"]
 script = ExtResource( 5 )
+
+[node name="Collecting" type="Node" parent="States"]
+script = ExtResource( 2 )
 
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 16.0

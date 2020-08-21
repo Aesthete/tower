@@ -4,5 +4,6 @@ func _ready():
 	states_map = {
 		"idle": $Idle,
 		"matched": $Matched,
-		"falling": $Falling,		
+		"falling": $Falling,
+		"collecting": $Collecting
 	}
