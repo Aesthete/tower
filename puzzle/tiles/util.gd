@@ -29,3 +29,10 @@ const IconColorMap : Dictionary = {
 	TileType.Gold: [TileColor.Yellow],
 	TileType.Health: [TileColor.Red]
 }
+
+# helpers
+static func get_tile_icon(tile_type):
+	return load(IconMap.get(tile_type))
+
+static func get_random_attack_tile_type():
+	return [TileType.Sword, TileType.Magic, TileType.Spear, TileType.Arrow][randi() % 4]

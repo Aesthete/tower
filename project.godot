@@ -19,15 +19,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://puzzle/board/util.gd"
 }, {
+"base": "Node",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://battle/enemies/enemy.gd"
+}, {
+"base": "Reference",
+"class": "EnemyUtil",
+"language": "GDScript",
+"path": "res://battle/enemies/util.gd"
+}, {
 "base": "Reference",
 "class": "GameGlobal",
 "language": "GDScript",
 "path": "res://common/globals.gd"
 }, {
+"base": "Control",
+"class": "HealthBar",
+"language": "GDScript",
+"path": "res://battle/health_bar.gd"
+}, {
 "base": "Reference",
 "class": "InputActions",
 "language": "GDScript",
 "path": "res://common/util/input_actions.gd"
+}, {
+"base": "Node",
+"class": "PuzzleState",
+"language": "GDScript",
+"path": "res://puzzle/puzzle_state.gd"
 }, {
 "base": "Node",
 "class": "State",
@@ -52,8 +72,12 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Board": "",
 "BoardUtil": "",
+"Enemy": "",
+"EnemyUtil": "",
 "GameGlobal": "",
+"HealthBar": "",
 "InputActions": "",
+"PuzzleState": "",
 "State": "",
 "StateMachine": "",
 "TileBase": "",
@@ -69,6 +93,7 @@ config/icon="res://icon.png"
 [autoload]
 
 BoardSignals="*res://puzzle/board/signals.gd"
+GameState="*res://game/game_state.gd"
 
 [display]
 

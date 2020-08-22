@@ -1,0 +1,87 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/all_tile_solid.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://battle/turn_timer/TurnTimer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://battle/party/party.gd" type="Script" id=4]
+[ext_resource path="res://battle/party/Hero.tscn" type="PackedScene" id=5]
+[ext_resource path="res://battle/HealthBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sprites/crown_ss.png" type="Texture" id=7]
+[ext_resource path="res://assets/game_theme.tres" type="Theme" id=8]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 7 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Party" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( 0, -16 )
+
+[node name="Background" type="TileMap" parent="Background"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 19, 1, 0, 19, 2, 0, 19, 3, 0, 19, 4, 0, 19, 5, 0, 19, 6, 0, 19, 7, 0, 19, 8, 0, 19, 9, 0, 19, 10, 0, 19, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 2, 65542, 0, 2, 65543, 0, 2, 65544, 0, 2, 65545, 0, 0, 65546, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 2, 131077, 0, 2, 131078, 0, 2, 131079, 0, 2, 131080, 0, 2, 131081, 0, 2, 131082, 0, 0 )
+
+[node name="Foreground" type="TileMap" parent="Background"]
+position = Vector2( 0, -16 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="TurnTimer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 48, 8 )
+
+[node name="Heroes" type="Node2D" parent="."]
+position = Vector2( 15, 0 )
+
+[node name="Hero" parent="Heroes" instance=ExtResource( 5 )]
+position = Vector2( 72, 24 )
+
+[node name="Hero2" parent="Heroes" instance=ExtResource( 5 )]
+position = Vector2( 96, 24 )
+
+[node name="Hero3" parent="Heroes" instance=ExtResource( 5 )]
+position = Vector2( 120, 24 )
+
+[node name="HealthBar" parent="." instance=ExtResource( 6 )]
+margin_left = 87.0
+margin_right = 87.0
+rect_scale = Vector2( 0.650587, 0.548369 )
+
+[node name="Gold" type="Node2D" parent="."]
+position = Vector2( -104, 19.25 )
+
+[node name="Icon" type="AnimatedSprite" parent="Gold"]
+position = Vector2( 135.5, 4 )
+scale = Vector2( 0.570833, 0.570833 )
+frames = SubResource( 3 )
+speed_scale = 0.75
+playing = true
+
+[node name="Balance" type="RichTextLabel" parent="Gold"]
+margin_left = 141.375
+margin_top = 0.625
+margin_right = 181.375
+margin_bottom = 40.625
+theme = ExtResource( 8 )
+custom_colors/default_color = Color( 0.831373, 0.647059, 0.0941176, 1 )
+text = "1234"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

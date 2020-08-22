@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://battle/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/all_tile_solid.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=3]
+[ext_resource path="res://battle/enemies/mission.gd" type="Script" id=4]
+
+[node name="Enemies" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background" type="TileMap" parent="Background"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 393237, 2, 0, 393238, 3, 0, 393238, 4, 0, 393238, 5, 0, 393238, 6, 0, 393238, 7, 0, 393238, 8, 0, 393238, 9, 0, 393239, 10, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 196608, 0, 131091, 196609, 0, 131091, 196610, 0, 131091, 196611, 0, 131091, 196612, 0, 131091, 196613, 0, 131091, 196614, 0, 131091, 196615, 0, 131091, 196616, 0, 131091, 196617, 0, 131091, 196618, 0, 131091 )
+
+[node name="Foreground" type="TileMap" parent="Background"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Characters" type="Node2D" parent="."]
+position = Vector2( -8, -8 )
+
+[node name="TargetType" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 31.7298, 30.2705 )
+
+[node name="TargetType2" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 63.7298, 30.2705 )
+
+[node name="TargetType5" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 95.7298, 30.2705 )
+
+[node name="TargetType3" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 127.73, 30.2705 )
+
+[node name="TargetType4" parent="Characters" instance=ExtResource( 1 )]
+position = Vector2( 159.73, 30.2705 )

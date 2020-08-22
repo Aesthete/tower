@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turn_bar_section.png-98065ec6198c44c455e8c12a6047871c.stex"
+path="res://.import/progress_health.png-3f73c3b8191ebc4bfb9d1d06ab26a2b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/turn_bar_section.png"
-dest_files=[ "res://.import/turn_bar_section.png-98065ec6198c44c455e8c12a6047871c.stex" ]
+source_file="res://assets/sprites/progress_health.png"
+dest_files=[ "res://.import/progress_health.png-3f73c3b8191ebc4bfb9d1d06ab26a2b4.stex" ]
 
 [params]
 
