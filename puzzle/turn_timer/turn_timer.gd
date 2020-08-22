@@ -11,9 +11,10 @@ func _ready():
 func _timeout():
 	BoardSignals.emit_signal("TurnTimerExpired")
 	
-func _reset_timer(tile = null):
-	_progress_bar.max_value = 5.0
-	_timer.start(5.0)
+func _reset_timer(tile : TileBase = null):
+	if tile and (tile.TileType != TileUtil.TileType.Gold):
+		_progress_bar.max_value = 5.0
+		_timer.start(5.0)
 
 func _process(delta):
 	_progress_bar.value = _timer.time_left
