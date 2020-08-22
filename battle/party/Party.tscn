@@ -2,10 +2,10 @@
 
 [ext_resource path="res://assets/all_tile_solid.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=2]
-[ext_resource path="res://battle/turn_timer/TurnTimer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://common/turn_timer/TurnTimer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://battle/party/party.gd" type="Script" id=4]
-[ext_resource path="res://battle/party/Hero.tscn" type="PackedScene" id=5]
-[ext_resource path="res://battle/HealthBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://battle/heroes/Hero.tscn" type="PackedScene" id=5]
+[ext_resource path="res://common/health_bar/HealthBar.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sprites/crown_ss.png" type="Texture" id=7]
 [ext_resource path="res://assets/game_theme.tres" type="Theme" id=8]
 
@@ -49,14 +49,18 @@ position = Vector2( 48, 8 )
 [node name="Heroes" type="Node2D" parent="."]
 position = Vector2( 15, 0 )
 
-[node name="Hero" parent="Heroes" instance=ExtResource( 5 )]
+[node name="Knight" parent="Heroes" instance=ExtResource( 5 )]
 position = Vector2( 72, 24 )
 
-[node name="Hero2" parent="Heroes" instance=ExtResource( 5 )]
+[node name="Rogue" parent="Heroes" instance=ExtResource( 5 )]
 position = Vector2( 96, 24 )
+AttackType = 3
+HeroType = 2
 
-[node name="Hero3" parent="Heroes" instance=ExtResource( 5 )]
+[node name="Mage" parent="Heroes" instance=ExtResource( 5 )]
 position = Vector2( 120, 24 )
+AttackType = 1
+HeroType = 1
 
 [node name="HealthBar" parent="." instance=ExtResource( 6 )]
 margin_left = 87.0
@@ -70,6 +74,7 @@ position = Vector2( -104, 19.25 )
 position = Vector2( 135.5, 4 )
 scale = Vector2( 0.570833, 0.570833 )
 frames = SubResource( 3 )
+frame = 1
 speed_scale = 0.75
 playing = true
 

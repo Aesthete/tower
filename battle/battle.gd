@@ -8,5 +8,3 @@ var DifficultEnemyCountMap : Dictionary = {
 }
 
 export(Difficulty) var GameDifficulty = Difficulty.Easy
-
-

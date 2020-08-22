@@ -1,30 +1,30 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://battle/turn_timer/turn_timer.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/timer.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/timer.png" type="Texture" id=1]
+[ext_resource path="res://common/turn_timer/turn_timer.gd" type="Script" id=2]
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
 region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 2 ), SubResource( 1 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
 } ]
 
 [node name="TurnTimer" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0

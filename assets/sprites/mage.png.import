@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/font.png-6843b632bab09f87d035913dcc9ab77d.stex"
+path="res://.import/mage.png-52bf76e23bab89e3e7950eef80c79479.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/font.png"
-dest_files=[ "res://.import/font.png-6843b632bab09f87d035913dcc9ab77d.stex" ]
+source_file="res://assets/sprites/mage.png"
+dest_files=[ "res://.import/mage.png-52bf76e23bab89e3e7950eef80c79479.stex" ]
 
 [params]
 

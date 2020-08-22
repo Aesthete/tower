@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "BattleUtil",
+"language": "GDScript",
+"path": "res://battle/util.gd"
+}, {
 "base": "Area2D",
 "class": "Board",
 "language": "GDScript",
@@ -25,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://battle/enemies/enemy.gd"
 }, {
 "base": "Reference",
-"class": "EnemyUtil",
-"language": "GDScript",
-"path": "res://battle/enemies/util.gd"
-}, {
-"base": "Reference",
 "class": "GameGlobal",
 "language": "GDScript",
 "path": "res://common/globals.gd"
@@ -37,7 +37,12 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "HealthBar",
 "language": "GDScript",
-"path": "res://battle/health_bar.gd"
+"path": "res://common/health_bar/health_bar.gd"
+}, {
+"base": "Node2D",
+"class": "Hero",
+"language": "GDScript",
+"path": "res://battle/heroes/hero.gd"
 }, {
 "base": "Reference",
 "class": "InputActions",
@@ -70,12 +75,13 @@ _global_script_classes=[ {
 "path": "res://puzzle/tiles/util.gd"
 } ]
 _global_script_class_icons={
+"BattleUtil": "",
 "Board": "",
 "BoardUtil": "",
 "Enemy": "",
-"EnemyUtil": "",
 "GameGlobal": "",
 "HealthBar": "",
+"Hero": "",
 "InputActions": "",
 "PuzzleState": "",
 "State": "",
@@ -94,6 +100,7 @@ config/icon="res://icon.png"
 
 BoardSignals="*res://puzzle/board/signals.gd"
 GameState="*res://game/game_state.gd"
+GameSignals="*res://game/game_signals.gd"
 
 [display]
 

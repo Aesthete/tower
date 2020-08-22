@@ -19,11 +19,15 @@ func _ready():
 
 func _timeout():
 	BoardSignals.emit_signal("TurnTimerExpired")
+	_reset_hourglasees()
+	
+func _reset_hourglasees():	
+	for _hourglass in _hourglasses: _hourglass.frame = 	HourglassSections - 1
 	
 func _reset_timer(tile : TileBase = null):
 	if tile and (tile.TileType != TileUtil.TileType.Gold):
 		_timer.start(5.0)
-		for _hourglass in _hourglasses: _hourglass.frame = 	HourglassSections - 1
+		_reset_hourglasees()
 
 func _process(delta):
 	var _frame_time = _timer.wait_time / _hourglass_section_count

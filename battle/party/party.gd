@@ -1,16 +1,13 @@
 extends Node
 
+onready var _health_bar : HealthBar = $HealthBar
+onready var _gold_balance : RichTextLabel = $Gold/Balance
+onready var _heroes : Array = $Heroes.get_children()
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	_gold_balance.text = String(GameState.get_gold_balance())
+	
+	var _health = 0
+	for _hero in _heroes:
+		_health += _hero.Health
+	_health_bar.init(_health, _health)

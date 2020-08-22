@@ -5,10 +5,18 @@
 [ext_resource path="res://assets/sprites/enemies.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/mission_complete.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/mission_fail.png" type="Texture" id=5]
-[ext_resource path="res://battle/HealthBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://common/health_bar/HealthBar.tscn" type="PackedScene" id=6]
 
 [node name="TargetType" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+
+[node name="Attacking" type="Node" parent="States"]
+
+[node name="Dying" type="Node" parent="States"]
 
 [node name="Mission" type="Node2D" parent="."]
 
