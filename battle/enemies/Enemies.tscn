@@ -26,15 +26,20 @@ position = Vector2( -8, -4 )
 
 [node name="TargetType" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 40, 28 )
+Health = 10000
 
 [node name="TargetType2" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 68, 28 )
+Health = 10000
 
 [node name="TargetType5" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 96, 28 )
+Health = 10000
 
 [node name="TargetType3" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 124, 28 )
+Health = 10000
 
 [node name="TargetType4" parent="Characters" instance=ExtResource( 1 )]
 position = Vector2( 152, 28 )
+Health = 10000

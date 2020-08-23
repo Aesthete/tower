@@ -8,12 +8,12 @@ static func _get_matching_neighbors_recursive(node_coord : Vector2, node_map: Di
 		_neighbors.push_back(node_map[dir] if node_map.has(dir) else null)
 	
 	var _tile = node_map[node_coord] as TileBase
-	var _tile_color = _tile.TileColor
+	var _tile_type = _tile.TileType
 	
 	for i in _neighbors.size():
 		var _coord = _directions[i]
 		var _neighbor = _neighbors[i]
-		if _neighbor and (_neighbor as TileBase).TileColor == _tile_color and not matched.has(_coord):
+		if _neighbor and (_neighbor as TileBase).TileType == _tile_type and not matched.has(_coord):
 			matched.push_back(_coord)
 			matched = _get_matching_neighbors_recursive(_coord, node_map, matched)
 	return matched

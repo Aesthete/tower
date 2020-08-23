@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/all_tile_solid.tres" type="TileSet" id=2]
@@ -6,11 +6,10 @@
 [ext_resource path="res://puzzle/tiles/Tile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://puzzle/board/states/pre_game.gd" type="Script" id=5]
 [ext_resource path="res://puzzle/board/states/post_game.gd" type="Script" id=6]
-[ext_resource path="res://puzzle/board/states/waiting_for_enemy.gd" type="Script" id=7]
+[ext_resource path="res://puzzle/board/states/waiting_for_battle.gd" type="Script" id=7]
 [ext_resource path="res://puzzle/board/states/resolving_matches.gd" type="Script" id=8]
 [ext_resource path="res://puzzle/board/states/waiting_for_player.gd" type="Script" id=9]
-[ext_resource path="res://puzzle/board/states/shuffling_board.gd" type="Script" id=10]
-[ext_resource path="res://puzzle/board/states/board_fsm.gd" type="Script" id=11]
+[ext_resource path="res://puzzle/board/states/fsm.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 72, 88 )
@@ -47,14 +46,11 @@ script = ExtResource( 5 )
 [node name="WatingForPlayer" type="Node" parent="States"]
 script = ExtResource( 9 )
 
-[node name="WaitingForEnemy" type="Node" parent="States"]
+[node name="WaitingForBattle" type="Node" parent="States"]
 script = ExtResource( 7 )
 
 [node name="ResolvingMatches" type="Node" parent="States"]
 script = ExtResource( 8 )
-
-[node name="ShufflingBoard" type="Node" parent="States"]
-script = ExtResource( 10 )
 
 [node name="PostGame" type="Node" parent="States"]
 script = ExtResource( 6 )

@@ -51,14 +51,17 @@ position = Vector2( 15, 0 )
 
 [node name="Knight" parent="Heroes" instance=ExtResource( 5 )]
 position = Vector2( 72, 24 )
+Health = 1000
 
 [node name="Rogue" parent="Heroes" instance=ExtResource( 5 )]
 position = Vector2( 96, 24 )
+Health = 1000
 AttackType = 3
 HeroType = 2
 
 [node name="Mage" parent="Heroes" instance=ExtResource( 5 )]
 position = Vector2( 120, 24 )
+Health = 1000
 AttackType = 1
 HeroType = 1
 

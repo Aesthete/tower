@@ -11,3 +11,4 @@ signal TileResolveRemovedMatched()
 signal BoardLayoutChanged()
 
 signal TurnTimerExpired()
+signal MatchPhaseEnded()

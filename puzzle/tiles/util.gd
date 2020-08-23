@@ -36,3 +36,6 @@ static func get_tile_icon(tile_type):
 
 static func get_random_attack_tile_type():
 	return [TileType.Sword, TileType.Magic, TileType.Spear, TileType.Arrow][randi() % 4]
+
+static func should_tile_reset_timer(tile_type):
+	return [TileType.Sword, TileType.Magic, TileType.Spear, TileType.Arrow].has(tile_type)

@@ -3,7 +3,6 @@ extends State
 onready var _tile : TileBase = owner
 
 func enter():
-	print ("Tile matched!")	
 	BoardSignals.connect("TileResolveTriggered", self, "_resolve_triggered")
 	_tile._highlight.color = Color.black
 	_tile._highlight.color.a = 0.5

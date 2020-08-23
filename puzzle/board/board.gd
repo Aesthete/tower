@@ -19,7 +19,8 @@ func register_new_match_made(tile : TileBase) -> void:
 	tile.emit_signal("TileMatched")
 	BoardSignals.emit_signal("TileMatched", tile)
 	var _coord = get_tile_coord(tile)
-	for _peer_coord in _matches_possible[_coord]:
+	for _peer_coord in _matches_possible[_coord]:		
+		BoardSignals.emit_signal("TileMatched", _tiles[_peer_coord])
 		_tiles[_peer_coord].emit_signal("TileMatched");
 
 func is_tile_in_match(tile: TileBase) -> bool:

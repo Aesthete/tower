@@ -15,10 +15,12 @@ export(float) var CountSpeed = 2.5
 var _count_speed = 100
 
 var _health : int = 0
+var _max : int = 0
 
 func init(start_health : float, max_health : float):
 	_count_speed = max_health / CountSpeed
 	_progress_bar.max_value = max_health
+	_max = max_health
 	set_health(start_health)
 
 func set_health(new_health : float):
@@ -34,6 +36,6 @@ func _get_bar_tint():
 func _process(delta):
 	if _health != _progress_bar.value:
 		var _dir = sign(_health - _progress_bar.value)
-		var _incr = _dir * _count_speed * delta
+		var _incr = _dir * _count_speed * delta		
 		_progress_bar.value += _incr
 	_progress_bar.tint_progress = _get_bar_tint()
