@@ -14,9 +14,13 @@ func _ready():
 		_enemy.init(TileUtil.get_random_attack_tile_type())
 	
 func _process_attacks():
-	for _enemy in _enemies:
-		if not _enemy._matched:
+	var _any_alive = false
+	for _enemy in _enemies:		
+		BoardSignals.emit_signal("RemoveRandomTile")
+		if _enemy.IsAlive and not _enemy._matched:
+			_any_alive = true
 			var _damage_done = _enemy.AttackBaseDamage
 			print ("Doing damage: " + String(_damage_done))
+			BoardSignals.emit_signal("RemoveRandomTile")
 			BattleSignals.emit_signal("PlayerDamaged", _damage_done)
 	BattleSignals.emit_signal("EnemiesFinishedAttack")

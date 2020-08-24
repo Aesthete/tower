@@ -106,7 +106,6 @@ _global_script_class_icons={
 
 config/name="Tower"
 run/main_scene="res://game/Main.tscn"
-config/icon="res://icon.png"
 
 [autoload]
 

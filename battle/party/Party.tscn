@@ -82,10 +82,10 @@ speed_scale = 0.75
 playing = true
 
 [node name="Balance" type="RichTextLabel" parent="Gold"]
-margin_left = 141.375
-margin_top = 0.625
-margin_right = 181.375
-margin_bottom = 40.625
+margin_left = 140.375
+margin_top = -1.875
+margin_right = 180.375
+margin_bottom = 38.125
 theme = ExtResource( 8 )
 custom_colors/default_color = Color( 0.831373, 0.647059, 0.0941176, 1 )
 text = "1234"

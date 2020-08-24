@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/sprites/health.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/catdog.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/crown.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/bow.png" type="Texture" id=4]
+[ext_resource path="res://assets/all_tile_solid.tres" type="TileSet" id=5]
+[ext_resource path="res://assets/game_theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/sprites/matcher.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/ghost.png" type="Texture" id=8]
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="Credits" type="Node2D" parent="."]
+
+[node name="Menu" type="Node2D" parent="Credits"]
+
+[node name="Splash" type="Node2D" parent="Credits/Menu"]
+
+[node name="Background" type="Node" parent="Credits/Menu/Splash"]
+
+[node name="background" type="TileMap" parent="Credits/Menu/Splash/Background"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 851984, 1, 0, 851985, 2, 0, 851985, 3, 0, 851985, 4, 0, 851985, 5, 0, 851985, 6, 0, 851985, 7, 0, 851985, 8, 0, 851985, 9, 0, 851985, 10, 0, 851986, 65536, 0, 917520, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 917522, 131072, 0, 917520, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 917522, 196608, 0, 917520, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 917522, 262144, 0, 917520, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 917522, 327680, 0, 917520, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 917522, 393216, 0, 917520, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 917522, 458752, 0, 917520, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 917522, 524288, 0, 917520, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 917522, 589824, 0, 917520, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 917522, 655360, 0, 917520, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 917522, 720896, 0, 917520, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 917522, 786432, 0, 917520, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786442, 0, 917522, 851968, 0, 917520, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 917522, 917504, 0, 917520, 917505, 0, 0, 917506, 0, 0, 917507, 0, 0, 917508, 0, 0, 917509, 0, 0, 917510, 0, 0, 917511, 0, 0, 917512, 0, 0, 917513, 0, 0, 917514, 0, 917522, 983040, 0, 917520, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 917522, 1048576, 0, 917520, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048586, 0, 917522, 1114112, 0, 917520, 1114113, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 917522, 1179648, 0, 917520, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 917522, 1245184, 0, 983056, 1245185, 0, 983057, 1245186, 0, 983057, 1245187, 0, 983057, 1245188, 0, 983057, 1245189, 0, 983057, 1245190, 0, 983057, 1245191, 0, 983057, 1245192, 0, 983057, 1245193, 0, 983057, 1245194, 0, 983058 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/Menu/Splash/Background"]
+margin_left = 22.3427
+margin_top = 23.147
+margin_right = 170.343
+margin_bottom = 44.147
+rect_scale = Vector2( 2.22641, 2.22641 )
+theme = ExtResource( 6 )
+text = "tutorial"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="catdog" type="Sprite" parent="Credits/Menu/Splash/Background"]
+position = Vector2( 82.0192, 293.234 )
+texture = ExtResource( 2 )
+
+[node name="crown" type="Sprite" parent="Credits/Menu/Splash/Background"]
+position = Vector2( 25.6221, 213.143 )
+texture = ExtResource( 3 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Credits/Menu/Splash/Background/crown"]
+margin_left = 11.0701
+margin_top = -21.1386
+margin_right = 159.07
+margin_bottom = -0.138611
+rect_scale = Vector2( 0.978759, 0.978759 )
+theme = ExtResource( 6 )
+text = "health and gold do not reset turn timer!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health" type="Sprite" parent="Credits/Menu/Splash/Background/crown"]
+position = Vector2( 0.33374, -17.6865 )
+texture = ExtResource( 1 )
+
+[node name="matcher" type="Sprite" parent="Credits/Menu/Splash/Background"]
+position = Vector2( 131.408, 141.396 )
+scale = Vector2( 0.343921, 0.343921 )
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Credits/Menu/Splash/Background/matcher"]
+margin_left = -341.382
+margin_top = -60.4931
+margin_right = -193.382
+margin_bottom = -39.4931
+rect_scale = Vector2( 2.95844, 2.95844 )
+theme = ExtResource( 6 )
+text = "match on board"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="Credits/Menu/Splash/Background"]
+margin_left = 19.0056
+margin_top = 233.719
+margin_right = 167.006
+margin_bottom = 254.719
+rect_scale = Vector2( 1.07332, 1.07332 )
+theme = ExtResource( 6 )
+text = "matches not matching enemies will end turn!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="Credits/Menu/Splash/Background"]
+position = Vector2( 205.899, -32.7036 )
+
+[node name="bow" type="Sprite" parent="Credits/Menu/Splash/Background/Node2D"]
+position = Vector2( -179.944, 97.6796 )
+texture = ExtResource( 4 )
+
+[node name="ghost" type="Sprite" parent="Credits/Menu/Splash/Background/Node2D"]
+position = Vector2( -179.944, 116.701 )
+texture = ExtResource( 8 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Credits/Menu/Splash/Background/Node2D"]
+margin_left = -166.867
+margin_top = 94.1968
+margin_right = -9.86636
+margin_bottom = 119.197
+theme = ExtResource( 6 )
+text = "check enemy type"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]

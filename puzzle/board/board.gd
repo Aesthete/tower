@@ -56,6 +56,15 @@ func build_board():
 	while _matches_possible.empty(): shuffle_board()
 	_force_reposition_tiles()
 	
+	
+func shuffle_and_reposition(immediate = false):
+	shuffle_board()
+	if immediate: _force_reposition_tiles()
+	else:
+		for _tile in _tiles: 
+			if _tiles.get(_tile):
+				_tiles.get(_tile).target_position = _tile_frame.map_to_world(_tile)
+		
 func shuffle_board():
 	print ("shuffling!")
 	var _tile_objs = _tiles.values()

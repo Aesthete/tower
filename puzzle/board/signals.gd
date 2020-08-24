@@ -12,3 +12,5 @@ signal BoardLayoutChanged()
 
 signal TurnTimerExpired()
 signal MatchPhaseEnded()
+
+signal RemoveRandomTile()

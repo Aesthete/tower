@@ -18,8 +18,7 @@ func update(delta):
 		if _any_tiles_falling: break;
 	
 	if not _any_tiles_falling:
-		emit_signal("finished", "waiting_for_player")
-	
+		emit_signal("finished", "waiting_for_player")	
 	
 func exit():
 	BoardSignals.disconnect("TileCollected", self, "_tile_collected")

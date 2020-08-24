@@ -5,7 +5,7 @@ onready var _board = owner as Board
 var _matches_made_this_turn : Dictionary
 var _turn_tracker : int = 0
 
-func enter():
+func enter():		
 	_turn_tracker += 1
 	BoardSignals.connect("TilePressed", self, "_on_tile_pressed")
 	BoardSignals.connect("TurnTimerExpired", self, "_on_turn_timer_expired")

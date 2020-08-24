@@ -1,57 +1,56 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://game/gui.gd" type="Script" id=1]
-[ext_resource path="res://game/world.gd" type="Script" id=2]
+[ext_resource path="res://game/game/GUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/states/splash.gd" type="Script" id=2]
 [ext_resource path="res://game/main.gd" type="Script" id=3]
-[ext_resource path="res://puzzle/board/Board.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=7]
-[ext_resource path="res://assets/environment.tres" type="TileSet" id=8]
-[ext_resource path="res://battle/Battle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/splash/Splash.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/states/fsm.gd" type="Script" id=5]
+[ext_resource path="res://common/overlay/DarkenedOverlay.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/states/credits.gd" type="Script" id=7]
+[ext_resource path="res://game/states/game.gd" type="Script" id=8]
+[ext_resource path="res://game/states/tutorial.gd" type="Script" id=9]
+[ext_resource path="res://game/states/menu.gd" type="Script" id=10]
+[ext_resource path="res://game/menu/Menu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/game/Game.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game/tutorial/Tutorial.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game/credits/Credits.tscn" type="PackedScene" id=14]
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
 
-[node name="World" type="Node2D" parent="."]
+[node name="States" type="Node" parent="."]
+script = ExtResource( 5 )
+START_STATE = NodePath("Splash")
+
+[node name="Splash" type="Node" parent="States"]
 script = ExtResource( 2 )
+SplashScene = ExtResource( 4 )
+WorldRoot = NodePath("../../World")
 
-[node name="Background" type="Node" parent="World"]
+[node name="Menu" type="Node" parent="States"]
+script = ExtResource( 10 )
+MenuScene = ExtResource( 11 )
+WorldRoot = NodePath("../../World")
 
-[node name="background" type="TileMap" parent="World/Background"]
-tile_set = ExtResource( 8 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( 0, 1, 0, 1, 1, 1, 2, 1, 1, 3, 1, 1, 4, 1, 1, 5, 1, 1, 6, 1, 1, 7, 1, 1, 8, 1, 1, 9, 1, 1, 10, 1, 2, 65536, 1, 65536, 65537, 1, 65537, 65538, 1, 65537, 65539, 1, 65537, 65540, 1, 65537, 65541, 1, 65537, 65542, 1, 65537, 65543, 1, 65537, 65544, 1, 65537, 65545, 1, 65537, 65546, 1, 65538, 131072, 1, 65536, 131073, 1, 65537, 131074, 1, 65537, 131075, 1, 65537, 131076, 1, 65537, 131077, 1, 65537, 131078, 1, 65537, 131079, 1, 65537, 131080, 1, 65537, 131081, 1, 65537, 131082, 1, 65538, 196608, 1, 65536, 196609, 1, 65537, 196610, 1, 65537, 196611, 1, 65537, 196612, 1, 65537, 196613, 1, 65537, 196614, 1, 65537, 196615, 1, 65537, 196616, 1, 65537, 196617, 1, 65537, 196618, 1, 65538, 262144, 1, 65536, 262145, 1, 65537, 262146, 1, 65537, 262147, 1, 65537, 262148, 1, 65537, 262149, 1, 65537, 262150, 1, 65537, 262151, 1, 65537, 262152, 1, 65537, 262153, 1, 65537, 262154, 1, 65538, 327680, 1, 65536, 327681, 1, 65537, 327682, 1, 65537, 327683, 1, 65537, 327684, 1, 65537, 327685, 1, 65537, 327686, 1, 65537, 327687, 1, 65537, 327688, 1, 65537, 327689, 1, 65537, 327690, 1, 65538, 393216, 1, 65536, 393217, 1, 65537, 393218, 1, 65537, 393219, 1, 65537, 393220, 1, 65537, 393221, 1, 65537, 393222, 1, 65537, 393223, 1, 65537, 393224, 1, 65537, 393225, 1, 65537, 393226, 1, 65538, 458752, 1, 65536, 458753, 1, 65537, 458754, 1, 65537, 458755, 1, 65537, 458756, 1, 65537, 458757, 1, 65537, 458758, 1, 65537, 458759, 1, 65537, 458760, 1, 65537, 458761, 1, 65537, 458762, 1, 65538, 524288, 1, 65536, 524289, 1, 65537, 524290, 1, 65537, 524291, 1, 65537, 524292, 1, 65537, 524293, 1, 65537, 524294, 1, 65537, 524295, 1, 65537, 524296, 1, 65537, 524297, 1, 65537, 524298, 1, 65538, 589824, 1, 65536, 589825, 1, 65537, 589826, 1, 65537, 589827, 1, 65537, 589828, 1, 65537, 589829, 1, 65537, 589830, 1, 65537, 589831, 1, 65537, 589832, 1, 65537, 589833, 1, 65537, 589834, 1, 65538, 655360, 1, 65536, 655361, 1, 65537, 655362, 1, 65537, 655363, 1, 65537, 655364, 1, 65537, 655365, 1, 65537, 655366, 1, 65537, 655367, 1, 65537, 655368, 1, 65537, 655369, 1, 65537, 655370, 1, 65538, 720896, 1, 65536, 720897, 1, 65537, 720898, 1, 65537, 720899, 1, 65537, 720900, 1, 65537, 720901, 1, 65537, 720902, 1, 65537, 720903, 1, 65537, 720904, 1, 65537, 720905, 1, 65537, 720906, 1, 65538, 786432, 1, 65536, 786433, 1, 65537, 786434, 1, 65537, 786435, 1, 65537, 786436, 1, 65537, 786437, 1, 65537, 786438, 1, 65537, 786439, 1, 65537, 786440, 1, 65537, 786441, 1, 65537, 786442, 1, 65538, 851968, 1, 65536, 851969, 1, 65537, 851970, 1, 65537, 851971, 1, 65537, 851972, 1, 65537, 851973, 1, 65537, 851974, 1, 65537, 851975, 1, 65537, 851976, 1, 65537, 851977, 1, 65537, 851978, 1, 65538, 917504, 1, 65536, 917505, 1, 65537, 917506, 1, 65537, 917507, 1, 65537, 917508, 1, 65537, 917509, 1, 65537, 917510, 1, 65537, 917511, 1, 65537, 917512, 1, 65537, 917513, 1, 65537, 917514, 1, 65538, 983040, 1, 65536, 983041, 1, 65537, 983042, 1, 65537, 983043, 1, 65537, 983044, 1, 65537, 983045, 1, 65537, 983046, 1, 65537, 983047, 1, 65537, 983048, 1, 65537, 983049, 1, 65537, 983050, 1, 65538, 1048576, 1, 65536, 1048577, 1, 65537, 1048578, 1, 65537, 1048579, 1, 65537, 1048580, 1, 65537, 1048581, 1, 65537, 1048582, 1, 65537, 1048583, 1, 65537, 1048584, 1, 65537, 1048585, 1, 65537, 1048586, 1, 65538, 1114112, 1, 65536, 1114113, 1, 65537, 1114114, 1, 65537, 1114115, 1, 65537, 1114116, 1, 65537, 1114117, 1, 65537, 1114118, 1, 65537, 1114119, 1, 65537, 1114120, 1, 65537, 1114121, 1, 65537, 1114122, 1, 65538, 1179648, 1, 65536, 1179649, 1, 65537, 1179650, 1, 65537, 1179651, 1, 65537, 1179652, 1, 65537, 1179653, 1, 65537, 1179654, 1, 65537, 1179655, 1, 65537, 1179656, 1, 65537, 1179657, 1, 65537, 1179658, 1, 65538, 1245184, 1, 131072, 1245185, 1, 131073, 1245186, 1, 131073, 1245187, 1, 131073, 1245188, 1, 131073, 1245189, 1, 131073, 1245190, 1, 131073, 1245191, 1, 131073, 1245192, 1, 131073, 1245193, 1, 131073, 1245194, 1, 131074 )
+[node name="Tutorial" type="Node" parent="States"]
+script = ExtResource( 9 )
+TutorialScene = ExtResource( 13 )
+WorldRoot = NodePath("../../World")
 
-[node name="Battle" parent="World" instance=ExtResource( 9 )]
+[node name="Game" type="Node" parent="States"]
+script = ExtResource( 8 )
+GameScene = ExtResource( 12 )
+WorldRoot = NodePath("../../World")
 
-[node name="Party" parent="World/Battle" index="1"]
-position = Vector2( 1.00452, 272.641 )
+[node name="Credits" type="Node" parent="States"]
+script = ExtResource( 7 )
+SplashScene = ExtResource( 14 )
+WorldRoot = NodePath("../../World")
 
-[node name="Enemies" parent="World/Battle" index="2"]
-position = Vector2( 0, 8 )
+[node name="World" type="Node2D" parent="."]
 
-[node name="Puzzle" type="Node" parent="World"]
+[node name="GUI" parent="." instance=ExtResource( 1 )]
 
-[node name="Puzzle" parent="World/Puzzle" instance=ExtResource( 4 )]
-position = Vector2( 16, 75 )
-BoardSize = Vector2( 9, 11 )
+[node name="DarkenedOverlay" parent="GUI" instance=ExtResource( 6 )]
 
-[node name="Effects" type="Node" parent="World"]
-
-[node name="Overlay" type="Node" parent="World"]
-
-[node name="TileMap" type="TileMap" parent="World/Overlay"]
-tile_set = ExtResource( 7 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( 0, 0, 18, 1, 0, 19, 2, 0, 19, 3, 0, 19, 4, 0, 19, 5, 0, 19, 6, 0, 19, 7, 0, 19, 8, 0, 19, 9, 0, 19, 10, 0, 20, 65536, 0, 65554, 65546, 0, 65556, 131072, 0, 65554, 131082, 0, 65556, 196608, 0, 65554, 196618, 0, 65556, 262144, 0, 65554, 262154, 0, 65556, 327680, 0, 65554, 327690, 0, 65556, 393216, 0, 65554, 393226, 0, 65556, 458752, 0, 65554, 458762, 0, 65556, 524288, 0, 65554, 524298, 0, 65556, 589824, 0, 65554, 589834, 0, 65556, 655360, 0, 65554, 655370, 0, 65556, 720896, 0, 65554, 720906, 0, 65556, 786432, 0, 65554, 786442, 0, 65556, 851968, 0, 65554, 851978, 0, 65556, 917504, 0, 65554, 917514, 0, 65556, 983040, 0, 65554, 983050, 0, 65556, 1048576, 0, 65554, 1048586, 0, 65556, 1114112, 0, 65554, 1114122, 0, 65556, 1179648, 0, 65554, 1179658, 0, 65556, 1245184, 0, 131090, 1245185, 0, 131091, 1245186, 0, 131091, 1245187, 0, 131091, 1245188, 0, 131091, 1245189, 0, 131091, 1245190, 0, 131091, 1245191, 0, 131091, 1245192, 0, 131091, 1245193, 0, 131091, 1245194, 0, 131092 )
-
-[node name="GUI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[editable path="World/Battle"]
+[editable path="GUI"]

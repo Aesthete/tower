@@ -31,11 +31,12 @@ func _ready():
 	
 	_states.initialize(_states.START_STATE)	
 
-func init(mission_type):	
+func init(mission_type):
+	if not IsAlive: return
 	_mission_complete.visible = false
 	_mission_fail.visible = false
 	AttackType = mission_type
-	EnemyType = BattleUtil.get_random_enemy()
+	EnemyType = BattleUtil.get_random_enemy() if not IsAlive else EnemyType
 	_enemy_icon.texture = BattleUtil.get_icon_for_enemy(EnemyType)
 	_mission_icon.texture = TileUtil.get_tile_icon(AttackType)
 	_health_bar.init(MaxHealth, MaxHealth)
@@ -51,7 +52,7 @@ func _turn_ended():
 func _battle_ended():
 	if _matched: init(TileUtil.get_random_attack_tile_type())
 	_mission_complete.visible = false
-	_mission_fail.visible = false
+	_mission_fail.visible = !IsAlive
 	_matched = false
 
 func _take_damage(damage):

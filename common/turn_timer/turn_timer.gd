@@ -35,7 +35,7 @@ func _reset_timer(tile : TileBase = null):
 func _process(delta):
 	var _frame_time = _timer.wait_time / _hourglass_section_count
 	var _current_frame = int(_timer.time_left / _frame_time)
-	var _hourglass = int(_current_frame / HourglassSections)
+	var _hourglass = min(int(_current_frame / HourglassSections), _hourglasses.size() - 1)
 	var _frame = _current_frame % HourglassSections
 	_hourglasses[_hourglass].frame = _frame
 
